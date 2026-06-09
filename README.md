@@ -1,11 +1,12 @@
 # 1. Contexto
 
     Las fugas físicas en las redes de distribución de agua potable representan uno de los principales desafíos operativos y financieros para las empresas de acueducto a nivel mundial. 
-    Por esto, predecir y detectar estas anomalías a tiempo es fundamental para minimizar el Índice de Agua No Contabilizada (ANC), reducir costos operativos de reparación, proteger la 
-    infraestructura y garantizar la continuidad del servicio a los usuarios. Su definición operativa corresponde a la pérdida de agua tratada que escapa del sistema de tuberías 
-    antes de llegar al consumidor final, usualmente provocada por el desgaste natural de los materiales, variaciones bruscas de presión o condiciones del entorno.
+    Por esto, predecir y detectar estas anomalías a tiempo es fundamental para minimizar el Índice de Agua No Contabilizada (ANC), reducir costos operativos de reparación, volumnes 
+    fugados, tiempos de atencion de daño, proteger la infraestructura y garantizar la continuidad del servicio a los usuarios. Su definición operativa corresponde a la pérdida de 
+    agua tratada que escapa del sistema de tuberías antes de llegar al consumidor final, usualmente provocada por el desgaste natural de los materiales, variaciones bruscas de 
+    presión o condiciones del entorno.
     
-    Las pérdidas de agua han estado presentes desde los inicios de los sistemas de acueducto modernos, y la forma de abordarlas ha evolucionado significativamente a# lo largo del 
+    Las pérdidas de agua han estado presentes desde los inicios de los sistemas de acueducto modernos, y la forma de abordarlas ha evolucionado significativamente a lo largo del 
     tiempo. Históricamente, la identificación de fugas tenía un enfoque puramente reactivo, dependiente de la afloración visible del agua en la superficie o de los reportes ciudadanos. 
     Debido a la necesidad de optimizar el recurso, las empresas empezaron a desarrollar sistemas de monitoreo preventivo, como la sectorización hidráulica y los barridos manuales con 
     equipos acústicos (geófonos). Posteriormente, se inició el uso de métodos estadísticos tradicionales e indicadores de balance hídrico, que demostraron ser efectivos para aislar 
@@ -22,10 +23,12 @@
 # 2. Objetivos
 
   ## 2.1 Objetivo general
+  
     Diseñar y desarrollar un dashboard interactivo que permita visualizar y analizar la interacción entre las variables operativas y de infraestructura de la red 
     de acueducto en Barranquilla, integrando un modelo de Machine Learning que facilite la identificación de patrones de fallo y contribuya a la predicción temprana de fugas de agua.
   
   ## 2.2 Objetivos específicos
+  
     • Describir la estructura general de la base de datos, abarcando variables espaciales, temporales, hidráulicas y físicas (presión, material, caudales, geolocalización, fecha de 
     instalación y diámetro).
     • Evaluar el desbalance de la variable respuesta "Hay o no fuga", dada la baja frecuencia de fallos frente al total de la red operativa.
@@ -36,9 +39,11 @@
     • Generar conclusiones que orienten la selección de características (Feature Engineering) y determinen los algoritmos de clasificación más adecuados para el modelo predictivo.
     
 # 3. Metodología
+
     El presente estudio se desarrolla bajo un enfoque cuantitativo y mixto, de alcance descriptivo-correlacional, ya que se busca describir el comportamiento operativo de la red de 
     distribución y evaluar cómo se relacionan las variables físicas e hidráulicas para la identificación de patrones anómalos que derivan en fallos físicos. La metodología se estructura en 
     las siguientes fases técnicas:
+    
 # 3.1. Tratamiento Estadístico y Pruebas No Paramétricas
 
     Dado que las variables numéricas del conjunto de datos (como la presión, los caudales y la edad de la tubería derivada de la fecha de instalación) suelen presentar una distribución 
@@ -55,6 +60,7 @@
     -- Mayor a 0.5	            -- Alta capacidad discriminante
     -- Entre 0.3 y 0.5	        -- Capacidad discriminante moderada
     -- Menor a 0.3	            -- Baja capacidad discriminante
+    
 # 3.2. Análisis de Solapamiento
 
     Un componente crítico en infraestructuras físicas es el solapamiento de clases, el cual ocurre cuando las condiciones operativas (ej. presiones o diámetros) de las tuberías que presentan 
@@ -72,6 +78,7 @@
         • Matrices de Correlación: Para identificar relaciones directas entre las variables (por ejemplo, la relación entre el diámetro de la tubería y los niveles de presión o caudal).
         • Factor de Inflación de la Varianza (VIF): Para detectar problemas de multicolinealidad y descartar variables que aporten información redundante (ej. si una "zona de presión" explica 
         exactamente lo mismo que un "sector" geográfico específico), optimizando así el rendimiento algorítmico.
+        
 # 3.4. Fases del Procesamiento
 
     El flujo de trabajo seguirá el estándar de ciencia de datos aplicado a servicios públicos:
