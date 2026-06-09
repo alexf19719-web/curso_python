@@ -18,3 +18,17 @@ frecuentes en comparación con la inmensa extensión de la red que opera con nor
 El presente trabajo utiliza una base de datos operativa de la red de acueducto de la ciudad de Barranquilla, Colombia, la cual integra registros históricos e hidráulicos del 
 sistema, abarcando variables estructurales y dinámicas como la presión, el material de la tubería, los caudales, la geolocalización, la fecha de instalación y el diámetro de las 
 redes.
+
+# 2. Objetivos
+  2.1 Objetivo general: Diseñar y desarrollar un dashboard interactivo que permita visualizar y analizar la interacción entre las variables operativas y de infraestructura de la red 
+  de acueducto en Barranquilla, integrando un modelo de Machine Learning que facilite la identificación de patrones de fallo y contribuya a la predicción temprana de fugas de agua.
+  2.2 Objetivos específicos
+    •	Describir la estructura general de la base de datos, abarcando variables espaciales, temporales, hidráulicas y físicas (presión, material, caudales, geolocalización, fecha de 
+    instalación y diámetro).
+    •	Evaluar el desbalance de la variable respuesta "Hay o no fuga", dada la baja frecuencia de fallos frente al total de la red operativa.
+    •	Analizar la distribución de las variables numéricas (como presiones, caudales y antigüedad de la tubería) utilizando estadísticas descriptivas y visualizaciones.
+    •	Comparar las características operativas y físicas de los segmentos de red que presentan fugas frente a aquellos que operan con normalidad.
+    •	Identificar posibles patrones espaciales o estructurales asociados a la vulnerabilidad y rotura de las tuberías.
+    •	Detectar posibles relaciones y multicolinealidad entre variables (por ejemplo, el impacto combinado de la presión y el material) mediante análisis de correlación.
+    •	Generar conclusiones que orienten la selección de características (Feature Engineering) y determinen los algoritmos de clasificación más adecuados para el modelo predictivo.
+    
