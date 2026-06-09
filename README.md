@@ -1,4 +1,5 @@
-1. Contexto
+# 1. Contexto
+
 Las fugas físicas en las redes de distribución de agua potable representan uno de los principales desafíos operativos y financieros para las empresas de acueducto a nivel mundial. 
 Por esto, predecir y detectar estas anomalías a tiempo es fundamental para minimizar el Índice de Agua No Contabilizada (ANC), reducir costos operativos de reparación, proteger la 
 infraestructura y garantizar la continuidad del servicio a los usuarios. Su definición operativa corresponde a la pérdida de agua tratada que escapa del sistema de tuberías 
