@@ -20,10 +20,12 @@ sistema, abarcando variables estructurales y dinámicas como la presión, el mat
 redes.
 
 # 2. Objetivos
-  ##2.1 Objetivo general
+
+  ## 2.1 Objetivo general
   Diseñar y desarrollar un dashboard interactivo que permita visualizar y analizar la interacción entre las variables operativas y de infraestructura de la red 
   de acueducto en Barranquilla, integrando un modelo de Machine Learning que facilite la identificación de patrones de fallo y contribuya a la predicción temprana de fugas de agua.
-  ##2.2 Objetivos específicos
+  
+  ## 2.2 Objetivos específicos
     •	Describir la estructura general de la base de datos, abarcando variables espaciales, temporales, hidráulicas y físicas (presión, material, caudales, geolocalización, fecha de 
     instalación y diámetro).
     •	Evaluar el desbalance de la variable respuesta "Hay o no fuga", dada la baja frecuencia de fallos frente al total de la red operativa.
@@ -32,4 +34,6 @@ redes.
     •	Identificar posibles patrones espaciales o estructurales asociados a la vulnerabilidad y rotura de las tuberías.
     •	Detectar posibles relaciones y multicolinealidad entre variables (por ejemplo, el impacto combinado de la presión y el material) mediante análisis de correlación.
     •	Generar conclusiones que orienten la selección de características (Feature Engineering) y determinen los algoritmos de clasificación más adecuados para el modelo predictivo.
+
+
     
