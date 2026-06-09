@@ -40,11 +40,13 @@
     distribución y evaluar cómo se relacionan las variables físicas e hidráulicas para la identificación de patrones anómalos que derivan en fallos físicos. La metodología se estructura en 
     las siguientes fases técnicas:
 # 3.1. Tratamiento Estadístico y Pruebas No Paramétricas
+
     Dado que las variables numéricas del conjunto de datos (como la presión, los caudales y la edad de la tubería derivada de la fecha de instalación) suelen presentar una distribución 
     asimétrica, picos por fluctuaciones operativas (valores atípicos) y un marcado desbalance de clases, se aplicarán pruebas no paramétricas para garantizar mayor robustez. Se utilizará la 
     prueba de U de Mann-Whitney para comparar las medianas de estas distribuciones entre los segmentos de red sin fuga y con fuga, sin asumir normalidad.
     Para las variables categóricas o cualitativas (como el material de la tubería), se utilizará la prueba de Independencia de Chi-cuadrado y el coeficiente V de Cramér para cuantificar la 
     fuerza de su asociación con el fallo.
+    
     Por otro lado, para evaluar la capacidad discriminativa de las variables continuas frente a la variable respuesta, se calculará el coeficiente de correlación biserial puntual (RBC), el 
     cual permite medir la relación entre una variable numérica y la variable binaria "Hay o no fuga" (0 = No hay fuga, 1 = Hay fuga). Valores de RBC cercanos a ±1 indican que la variable 
     separa claramente ambos grupos, mientras que valores cercanos a 0 indican un fuerte solapamiento. Se empleará la siguiente escala de evaluación:
@@ -54,19 +56,24 @@
     -- Entre 0.3 y 0.5	        -- Capacidad discriminante moderada
     -- Menor a 0.3	            -- Baja capacidad discriminante
 # 3.2. Análisis de Solapamiento
+
     Un componente crítico en infraestructuras físicas es el solapamiento de clases, el cual ocurre cuando las condiciones operativas (ej. presiones o diámetros) de las tuberías que presentan 
     fugas coinciden con las de aquellas que operan normalmente.
+    
         • Identificación: Se analizará mediante diagramas de densidad, boxplots y mapas de calor espacial (geolocalización). Un alto solapamiento indica que variables aisladas (como solo 
         mirar la presión) no bastan para distinguir un fallo, mientras que un bajo solapamiento señala zonas de alto riesgo operativo.
         • Justificación: Analizar este fenómeno es vital para entender por qué tuberías en condiciones hidráulicas aparentemente normales fallan (posiblemente por variables ocultas como 
         la fatiga del material) y para comprender las limitaciones o falsos positivos que pueda emitir el modelo predictivo.
 
 # 3.3 Análisis Multivariado y Control de Multicolinealidad
+
     Para asegurar la estabilidad del modelo predictivo base, se analizará la interacción conjunta de las variables de la red mediante:
+    
         • Matrices de Correlación: Para identificar relaciones directas entre las variables (por ejemplo, la relación entre el diámetro de la tubería y los niveles de presión o caudal).
         • Factor de Inflación de la Varianza (VIF): Para detectar problemas de multicolinealidad y descartar variables que aporten información redundante (ej. si una "zona de presión" explica 
         exactamente lo mismo que un "sector" geográfico específico), optimizando así el rendimiento algorítmico.
-# 3.3 Fases del procesamiento
+# 3.4. Fases del Procesamiento
+
     El flujo de trabajo seguirá el estándar de ciencia de datos aplicado a servicios públicos:
 
         • Preprocesamiento: Verificación de la integridad de la base de datos (valores faltantes, errores de digitación en diámetros, consolidación de coordenadas). Transformación de fechas 
@@ -77,4 +84,13 @@
         modelo (como F1-Score en lugar de simple exactitud).
         • Modelado Base: Implementación de un modelo de regresión logística como punto de referencia (baseline) probabilístico para estimar el riesgo inicial de fuga.
 
+# 3.5. Herramientas Tecnológicas
+
+    El análisis y desarrollo se realizará mediante un ecosistema analítico integrado:
+
+        • Lenguajes y Consultas: Python para la extracción estructurada de los registros del acueducto y como motor principal de procesamiento.
+        • Manipulación y Estadística: 
+        • Visualización: 
+        • Despliegue e Interactividad: 
+        • Control de Modelado: 
  
