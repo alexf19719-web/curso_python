@@ -26,14 +26,14 @@
     de acueducto en Barranquilla, integrando un modelo de Machine Learning que facilite la identificación de patrones de fallo y contribuya a la predicción temprana de fugas de agua.
   
   ## 2.2 Objetivos específicos
-    •	Describir la estructura general de la base de datos, abarcando variables espaciales, temporales, hidráulicas y físicas (presión, material, caudales, geolocalización, fecha de 
+    • Describir la estructura general de la base de datos, abarcando variables espaciales, temporales, hidráulicas y físicas (presión, material, caudales, geolocalización, fecha de 
     instalación y diámetro).
-    •	Evaluar el desbalance de la variable respuesta "Hay o no fuga", dada la baja frecuencia de fallos frente al total de la red operativa.
-    •	Analizar la distribución de las variables numéricas (como presiones, caudales y antigüedad de la tubería) utilizando estadísticas descriptivas y visualizaciones.
-    •	Comparar las características operativas y físicas de los segmentos de red que presentan fugas frente a aquellos que operan con normalidad.
-    •	Identificar posibles patrones espaciales o estructurales asociados a la vulnerabilidad y rotura de las tuberías.
-    •	Detectar posibles relaciones y multicolinealidad entre variables (por ejemplo, el impacto combinado de la presión y el material) mediante análisis de correlación.
-    •	Generar conclusiones que orienten la selección de características (Feature Engineering) y determinen los algoritmos de clasificación más adecuados para el modelo predictivo.
+    • Evaluar el desbalance de la variable respuesta "Hay o no fuga", dada la baja frecuencia de fallos frente al total de la red operativa.
+    • Analizar la distribución de las variables numéricas (como presiones, caudales y antigüedad de la tubería) utilizando estadísticas descriptivas y visualizaciones.
+    • Comparar las características operativas y físicas de los segmentos de red que presentan fugas frente a aquellos que operan con normalidad.
+    • Identificar posibles patrones espaciales o estructurales asociados a la vulnerabilidad y rotura de las tuberías.
+    • Detectar posibles relaciones y multicolinealidad entre variables (por ejemplo, el impacto combinado de la presión y el material) mediante análisis de correlación.
+    • Generar conclusiones que orienten la selección de características (Feature Engineering) y determinen los algoritmos de clasificación más adecuados para el modelo predictivo.
     
 # 3. Metodología
     El presente estudio se desarrolla bajo un enfoque cuantitativo y mixto, de alcance descriptivo-correlacional, ya que se busca describir el comportamiento operativo de la red de 
@@ -56,9 +56,25 @@
 # 3.2. Análisis de Solapamiento
     Un componente crítico en infraestructuras físicas es el solapamiento de clases, el cual ocurre cuando las condiciones operativas (ej. presiones o diámetros) de las tuberías que presentan 
     fugas coinciden con las de aquellas que operan normalmente.
-        •	Identificación: Se analizará mediante diagramas de densidad, boxplots y mapas de calor espacial (geolocalización). Un alto solapamiento indica que variables aisladas (como solo 
+        • Identificación: Se analizará mediante diagramas de densidad, boxplots y mapas de calor espacial (geolocalización). Un alto solapamiento indica que variables aisladas (como solo 
         mirar la presión) no bastan para distinguir un fallo, mientras que un bajo solapamiento señala zonas de alto riesgo operativo.
-        •	Justificación: Analizar este fenómeno es vital para entender por qué tuberías en condiciones hidráulicas aparentemente normales fallan (posiblemente por variables ocultas como 
+        • Justificación: Analizar este fenómeno es vital para entender por qué tuberías en condiciones hidráulicas aparentemente normales fallan (posiblemente por variables ocultas como 
         la fatiga del material) y para comprender las limitaciones o falsos positivos que pueda emitir el modelo predictivo.
+
+# 3.3 Análisis Multivariado y Control de Multicolinealidad
+    Para asegurar la estabilidad del modelo predictivo base, se analizará la interacción conjunta de las variables de la red mediante:
+        • Matrices de Correlación: Para identificar relaciones directas entre las variables (por ejemplo, la relación entre el diámetro de la tubería y los niveles de presión o caudal).
+        • Factor de Inflación de la Varianza (VIF): Para detectar problemas de multicolinealidad y descartar variables que aporten información redundante (ej. si una "zona de presión" explica 
+        exactamente lo mismo que un "sector" geográfico específico), optimizando así el rendimiento algorítmico.
+# 3.3 Fases del procesamiento
+    El flujo de trabajo seguirá el estándar de ciencia de datos aplicado a servicios públicos:
+
+        • Preprocesamiento: Verificación de la integridad de la base de datos (valores faltantes, errores de digitación en diámetros, consolidación de coordenadas). Transformación de fechas 
+        (Fecinstalacion) en variables numéricas de envejecimiento (ej. "Edad en años").
+        • Análisis Exploratorio (EDA): Análisis univariado y bivariado para observar el comportamiento de las variables estructurales e hidráulicas respecto a la variable respuesta. Ejecución 
+        del análisis multivariado y control de multicolinealidad.
+        • Evaluación del Desbalance: Cuantificación de la proporción de la clase minoritaria (tuberías con fuga) frente a la red sana, paso esencial para definir las métricas de evaluación del 
+        modelo (como F1-Score en lugar de simple exactitud).
+        • Modelado Base: Implementación de un modelo de regresión logística como punto de referencia (baseline) probabilístico para estimar el riesgo inicial de fuga.
 
  
